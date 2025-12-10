@@ -16,12 +16,14 @@ A set of shaders defines the compute and pixel shaders used for:
 - Stepping the automata each frame  
 - Displaying the simulation on screen  
 
+![Unreal Editor](Screenshots/gol.png)
 
 
 ## 2. Material Shader Integration & Artist Control  
 
 Material Shaders allow artists to influence the simulation directly via the Material editor.  
 
+![Renderdoc](Screenshots/material.png)
 
 
 ## 3. Custom Mesh Pass & GPU Simulation  
@@ -47,5 +49,3 @@ A complete RDG pipeline manages the simulation:
 
 
 
-![Unreal Editor](Screenshots/unreal.png)
-![Renderdoc](Screenshots/renderdoc.png)
