@@ -1,15 +1,51 @@
-# Unreal Game of Life Render Plugin
+# UE5 RDG Game of Life — Custom Mesh Pass Rendering Plugin
 
-This plugin implements a real-time **screen-space Game of Life** simulation that interacts with scene geometry in Unreal Engine. The effect works on static meshes, skeletal meshes, and Niagara particles, letting objects draw into the cellular automata simulation using their own Materials.
+This plugin implements a fully GPU-driven **Game of Life simulation** post processing effect integrated into Unreal Engine’s rendering pipeline.  
+It combines **SceneViewExtensions**, **Global Shaders**, **Material Shaders**, **RDG passes**, and a **Custom Mesh Pass** to create an interactive screen-space effect that responds to scene geometry.
 
-## How it works
-- **Initialize pass**: sets up the simulation texture  
-- **Mesh pass**: scene primitives draw into the simulation, controlled by their Materials  
-- **Simulate pass**: a compute shader updates the Game of Life rules each frame  
-- **Display pass**: a pixel shader composites the simulation back to screen  
-- **Resample pass**: keeps state consistent across resolution changes  
+The sections below describe the main systems used in the final implementation.
 
-All passes are driven by Unreal’s **Material graph integration** and **mesh/material pass system**, enabling artists to control participation and parameters directly through Materials rather than hard-coded C++.
+
+## 1. Rendering Pipeline Integration & Screen-Space Output  
+
+The plugin uses a **SceneViewExtension** to inject custom rendering logic into Unreal Engine's pipeline. This system enables:
+
+A set of shaders defines the compute and pixel shaders used for:
+
+- Initializing simulation textures  
+- Stepping the automata each frame  
+- Displaying the simulation on screen  
+
+
+
+## 2. Material Shader Integration & Artist Control  
+
+Material Shaders allow artists to influence the simulation directly via the Material editor.  
+
+
+
+## 3. Custom Mesh Pass & GPU Simulation  
+*Mesh pass registration, RDG compute pipeline, Game of Life logic*
+
+The core of the plugin is a **Custom Mesh Pass**, registered alongside Unreal’s built-in passes.  
+This pass collects primitives marked through the Material system and renders them into a mask texture, which acts as the input for the simulation.
+
+A complete RDG pipeline manages the simulation:
+
+### Simulation Pass (Compute Shader)
+- Applies Game of Life rules  
+- Performs double-buffering  
+- Reads from previous state, writes to next state  
+
+### Resample Pass
+- Maintains simulation continuity when viewport resolution changes  
+
+### Display Pass (Pixel Shader)
+- Blits the simulation result into the final render using a fullscreen pass  
+
+
+
+
 
 ![Unreal Editor](Screenshots/unreal.png)
 ![Renderdoc](Screenshots/renderdoc.png)
