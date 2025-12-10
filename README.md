@@ -27,7 +27,6 @@ Material Shaders allow artists to influence the simulation directly via the Mate
 
 
 ## 3. Custom Mesh Pass & GPU Simulation  
-*Mesh pass registration, RDG compute pipeline, Game of Life logic*
 
 The core of the plugin is a **Custom Mesh Pass**, registered alongside Unreal’s built-in passes.  
 This pass collects primitives marked through the Material system and renders them into a mask texture, which acts as the input for the simulation.
