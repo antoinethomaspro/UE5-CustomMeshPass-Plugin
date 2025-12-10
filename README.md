@@ -1,6 +1,6 @@
-# UE5 RDG Game of Life — Custom Mesh Pass Rendering Plugin
+# Game of Life Simulation Plugin
 
-This plugin implements a fully GPU-driven **Game of Life simulation** post processing effect integrated into Unreal Engine’s rendering pipeline.  
+This plugin implements a fully GPU driven **Game of Life simulation** post processing effect integrated into Unreal Engine’s rendering pipeline.  
 It combines **SceneViewExtensions**, **Global Shaders**, **Material Shaders**, **RDG passes**, and a **Custom Mesh Pass** to create an interactive screen-space effect that responds to scene geometry.
 
 The sections below describe the main systems used in the final implementation.
