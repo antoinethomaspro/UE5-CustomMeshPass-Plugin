@@ -8,7 +8,7 @@ The sections below describe the main systems used in the final implementation.
 
 ## 1. Rendering Pipeline Integration & Screen-Space Output  
 
-The plugin uses a **SceneViewExtension** to inject custom rendering logic into Unreal Engine's pipeline. This system enables:
+The plugin uses Unreal's SceneViewExtension to inject custom rendering logic into Unreal Engine's pipeline. 
 
 A set of shaders defines the compute and pixel shaders used for:
 
